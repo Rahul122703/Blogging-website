@@ -99,8 +99,11 @@ def register():
             hashed_password = generate_password_hash(request.form.get('password'), method='pbkdf2:sha256',salt_length=8)
             new_user = User(name = request.form.get('name'), email = entred_email, password = hashed_password)
             db.session.add(new_user)
-            print("the code is here")
             db.session.commit()
+            login_user(new_user)
+            global logged_in,current_user_id
+            logged_in = 1
+            current_user_id = new_user.id
             return redirect(url_for('get_all_posts'))
         else:
             error = "This account already exists, Please try another one"
