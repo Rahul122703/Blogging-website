@@ -22,40 +22,42 @@
 <!-- Post Content -->
 <article>
   <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        {{ post.body|safe }}
-        <!--TODO: Only show Edit Post button if user id is 1 (admin user) -->
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <!-- Adjust column widths to increase overall width -->
+    <div class="col-md-12 col-lg-10 col-xl-9">
+      {{ post.body|safe }}
+      {% if current_user_id %}
         <div class="d-flex justify-content-end mb-4">
           <a
             class="btn btn-primary float-right"
-            href="{{url_for('edit_post', post_id=post.id)}}"
-            >Edit Post</a
-          >
+            href="{{ url_for('edit_post', post_id=post.id) }}"
+            >Edit Post</a>
         </div>
-        <form method = 'POST' action = "{{ url_for('show_post', post_id=post.id) }}">
-          {{ render_form(comment_form) }}
-        </form>
-        <!-- Comments Area -->
-        <div class="comment">
-          <!-- TODO: Show all the comments on a post -->
-          <ul class="commentList">
-            {% for comment in comments: %}
-              <li>
-                  <div class="commenterImage">
-                    <img src="../static/assets/img/default-profile.jpg" />
-                  </div>
-                  <div class="commentText">
-                    <p><h6>{{comment.body}}</h6></p>
-                    <span class="date sub-text">{{ comment.comment_by.name }}</span>
-                </div>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+      {% endif %}
+      <form method="POST" action="{{ url_for('show_post', post_id=post.id) }}">
+        {{ render_form(comment_form) }}
+      </form>
+      <!-- Comments Area -->
+      <div class="comment">
+        <!-- Show all comments on the post -->
+        <ul class="commentList">
+          {% for comment in comments %}
+            <li>
+              <div class="commenterImage">
+                <img src="https://ui-avatars.com/api/?name={{ comment.comment_by.name }}&background=random&color=fff&size=50" alt="Avatar" class="avatar-img" />
+              </div>
+              <div class="commentText">
+                <p><h6>{{ comment.body }}</h6></p>
+                <span class="date sub-text">{{ comment.comment_by.name }}</span>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
+</div>
+
 </article>
 
 {% include "footer.html" %}

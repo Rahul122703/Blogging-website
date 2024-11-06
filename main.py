@@ -12,14 +12,13 @@ import smtplib
 from flask_ckeditor import CKEditor
 import os
 
-
 logged_in = 0
 current_user_id = None
 on_blog = None
 my_email = "killbusyness@gmail.com" 
-app_password = "tnfj knqq kwft luzb" 
+app_password = "ikvm yiji dxtd kiph" 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b" 
+app.config['SECRET_KEY'] = "rahulsharma" 
 # '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap5(app)
 ckeditor = CKEditor(app)
@@ -146,7 +145,7 @@ def get_all_posts():
 
 @app.route("/post/<int:post_id>",methods = ['GET','POST'])
 def show_post(post_id):
-    global on_blog
+    global on_blog ,current_user_id
 
     if (current_user_id == None) and (on_blog == True):
         return redirect(url_for('login'))
@@ -166,49 +165,64 @@ def show_post(post_id):
         db.session.commit()
         return redirect(url_for('show_post',post_id = post_id))
     on_blog = True
-    return render_template("post.html", post=requested_post,comments = data, comment_form = comment_form_instance)
+    return render_template("post.html", 
+                           post=requested_post,comments = data, 
+                           comment_form = comment_form_instance,
+                           current_user_id = current_user_id)
 
 
 
 @app.route("/new-post", methods=["GET", "POST"])
-@admin_only
+@admin_only #11
 def add_new_post(): 
-    form = CreatePostForm()
-    if form.validate_on_submit():
+    if request.method == "POST":
         new_post = BlogPost(
-            title=form.title.data,
-            subtitle=form.subtitle.data,
-            body=form.body.data,
-            img_url=form.img_url.data, 
-            author=current_user, 
-            date=date.today().strftime("%B %d, %Y")
-        ) 
+        title=request.form['title'],
+        subtitle=request.form['subtitle'],
+        body=request.form['body'],
+        img_url=request.form['img_url'], 
+        author=current_user, 
+        date=date.today().strftime("%B %d, %Y")
+        )
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for("get_all_posts"))
-    return render_template("make-post.html", form=form)
+    return render_template("make_post.html")
 
 
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @admin_only
 def edit_post(post_id):
     post = db.get_or_404(BlogPost, post_id)
-    edit_form = CreatePostForm(
-        title=post.title,
-        subtitle=post.subtitle,
-        img_url=post.img_url,
-        author=post.author,
-        body=post.body
-    )
-    if edit_form.validate_on_submit():
-        post.title = edit_form.title.data
-        post.subtitle = edit_form.subtitle.data
-        post.img_url = edit_form.img_url.data
+    # edit_form = CreatePostForm(
+    #     title=post.title,
+    #     subtitle=post.subtitle,
+    #     img_url=post.img_url,
+    #     author=post.author,
+    #     body=post.body
+    # )
+    if request.method == "POST":
+        print("before title get")
+        post.title = request.form.get('title')
+
+        print("before subtitle get")
+        post.subtitle = request.form.get('subtitle')
+
+        print("before body get")
+        post.body = request.form.get('body')
+
+        print("before img_url get")
+        post.img_url = request.form.get('img_url')
+
+        print("before author get")
         post.author = current_user
-        post.body = edit_form.body.data
         db.session.commit()
+
         return redirect(url_for("show_post", post_id=post.id))
-    return render_template("make-post.html", form=edit_form, is_edit=True)
+    return render_template("make_post.html", 
+                           is_edit=True,
+                           post = post,
+                           render_content = post.body)
 
 
 @app.route("/delete/<int:post_id>")
