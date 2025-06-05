@@ -132,7 +132,7 @@ def login():
             return render_template('login.html',form = form_instance,error = error)
     return render_template("login.html",form = form_instance)
 
-@app.route('/')
+@app.route('/all_posts')
 def get_all_posts():
     global on_blog
     on_blog = False
@@ -234,14 +234,15 @@ def delete_post(post_id):
     return redirect(url_for('get_all_posts'))
 
 
-@app.route("/about")
+@app.route("/")
 def about():
-    return render_template("about.html")
+    year = date.today().year
+    return render_template("about.html",year=year)
 
 
 @app.route("/contact",methods = ['POST','GET'])
 def contact():
-    if request.method == "POST":
+    if request.method == "POST":  
         name = request.form['name']
         email = request.form['email']
         number = request.form['phone']

@@ -1,35 +1,328 @@
 {% include "header.html" %}
 
-<!-- Page Header-->
-<header
-  class="masthead"
-  style="background-image: url('../static/assets/img/about-bg.jpg')"
->
+<header class="masthead" style="background-image: url('../static/assets/img/about-bg.jpg')">
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="page-heading">
-          <h1>About Me</h1>
-          <span class="subheading">This is what I do.</span>
-        </div>
+      <div class="col-md-10 col-lg-8 col-xl-7 text-center">
+        <h1 class="display-5 fw-bold text-white">About Me</h1>
+        <span class="subheading text-light fst-italic">This is what I do.</span>
       </div>
     </div>
   </div>
 </header>
-<!-- Main Content-->
+
+<style>
+  .project-card111 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .project-card111:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel-box111,
+  .carousel-box111 .carousel-inner,
+  .carousel-box111 .carousel-item,
+  .carousel-box111 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .skills-card111 li {
+    margin-bottom: 0.25rem;
+  }
+</style>
+
 <main class="mb-4">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        
-👋 Hello there, fellow enthusiasts and curious minds! Welcome to our vibrant blogging haven, where I, Rahul Sharma, am absolutely thrilled to extend a warm invitation to you. Here, we've crafted an online space that pulsates with engaging and insightful content, covering a kaleidoscope of topics close to your heart.
+      <div class="col-12 text-center mb-5">
+        <img src="https://avatars.githubusercontent.com/u/113322940?v=4" alt="Rahul Sharma"
+          class="rounded-circle img-fluid" style="width: 160px; height: 160px; object-fit: cover" />
+        <p class="mt-3 lead">
+          Hi! I’m <strong>Rahul Sharma</strong>, a passionate full-stack web
+          developer currently pursuing a B.E. in Information Technology at
+          <strong>Xavier Institute of Engineering, Mumbai</strong> (CGPA 8+).
+        </p>
+      </div>
 
-<p>As you meander through our diverse blog categories, you'll stumble upon a treasure trove of thoughts, experiences, and expertise. Whether your passion lies in technology, lifestyle, travel, or entertainment, consider this your digital sanctuary.</p>
-<p>Our dedicated team, including developers and administrators, pours their passion into every word to create a tapestry of articles that cater to your varied interests. Tech enthusiasts, travel buffs, or those seeking lifestyle tips – we've got something for everyone.</p>
-<p>But what truly sets us apart is the interactive essence we've woven into the fabric of our platform. Your opinions matter, and we wholeheartedly encourage you to be an active part of the dialogue. Leave comments, ask questions, and connect with like-minded readers. We're building a community where every voice resonates.</p>
-<p>Navigating our user-friendly interface is a breeze, ensuring a seamless experience for both seasoned bloggers and casual readers. Our commitment is to make your journey through the blogosphere smooth and enjoyable.</p>
-<p>To keep the excitement flowing, make sure to subscribe to our newsletter. By doing so, you'll stay in the loop with the latest updates, ensuring you never miss a beat when it comes to fresh content and spirited discussions.</p>
-<p>So, let's embark on this exhilarating blogging adventure together! Explore, connect, and become an integral part of our growing community. I'm genuinely thrilled to have you join us on this journey of discovery and conversation. Happy reading, happy commenting, and welcome to our dynamic world of blogging! 🚀✨</p>
+      <div class="col-12 mb-5">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-6 text-center">
+            <img src="https://ghchart.rshah.org/rahul122703" alt="GitHub Contribution Graph"
+              class="img-fluid rounded" />
+          </div>
+          <div class="col-lg-3 d-flex flex-column align-items-center">
+            <img src="https://github-readme-stats.vercel.app/api?username=rahul122703&show_icons=true&theme=dark"
+              alt="GitHub Stats" class="img-fluid rounded mb-3 h-100" />
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=rahul122703&theme=dark" alt="GitHub Streak"
+              class="img-fluid rounded" />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-black p-6 rounded-2xl shadow-xl text-center my-5">
+        <h2 class="text-2xl font-bold mb-2">Crafts My Own UI Components</h2>
+        <p class="text-lg font-medium mb-6">
+          Built from scratch using
+          <span class="underline decoration-wavy">Vanilla CSS</span> and
+          <span class="underline decoration-wavy">Tailwind CSS</span> — clean,
+          responsive, and re-usable by design.
+        </p>
+        <a href="../static//assets/RahulSharmaResume.pdf" download
+          class="inline-block p-4 border border-gray-800 text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition duration-300">
+          Download Resume
+        </a>
+      </div>
+
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold text-center mb-4">Skills & Projects</h3>
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="card skills-card111 h-100 p-4">
+              <h5 class="fw-bold mb-3">Programming Languages</h5>
+              <ul class="list-unstyled">
+                <li><strong>Primary:</strong> JavaScript, C/C++, Python</li>
+                <li><strong>Markup & Query:</strong> HTML, CSS, SQL</li>
+              </ul>
+
+              <h5 class="fw-bold mt-4 mb-2">Web Technologies</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <strong>Frontend:</strong> React.js, Bootstrap, Tailwind CSS
+                </li>
+                <li>
+                  <strong>Backend:</strong> Flask, Django REST Framework,
+                  Next.js
+                </li>
+                <li><strong>Tools:</strong> Postman</li>
+              </ul>
+
+              <h5 class="fw-bold mt-4 mb-2">Automation & Scraping</h5>
+              <ul class="list-unstyled">
+                <li>Selenium (Automation)</li>
+                <li>BeautifulSoup (Web Scraping)</li>
+              </ul>
+
+              <h5 class="fw-bold mt-4 mb-2">Version Control</h5>
+              <ul class="list-unstyled">
+                <li>Git & GitHub</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <a href="https://pollversey.onrender.com" target="_blank" class="text-decoration-none text-dark">
+                  <div class="card project-card111">
+                    <div id="carouselPollVerse" class="carousel slide carousel-box111" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="../static/assets/img/Project/pollverse/homepage_phone-portrait.png"
+                            alt="PollVerse 1" />
+                        </div>
+                        <div class="carousel-item">
+                          <img src="../static/assets/img/Project/pollverse/phone_create_poll-portrait.png"
+                            alt="PollVerse 2" />
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselPollVerse"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselPollVerse"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title text-center mb-0">PollVerse</h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6">
+                <a href="https://sharesense.onrender.com" target="_blank" class="text-decoration-none text-dark">
+                  <div class="card project-card111">
+                    <div id="carouselShareSense" class="carousel slide carousel-box111" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="../static/assets/img/Project/rshare/pc1.png" alt="ShareSense 1" />
+                        </div>
+                        <div class="carousel-item">
+                          <img src="../static/assets/img/Project/rshare/phone2.png" alt="ShareSense 2" />
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselShareSense"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselShareSense"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title text-center mb-0">ShareSense</h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6">
+                <a href="https://rahulmart.netlify.app" target="_blank" class="text-decoration-none text-dark">
+                  <div class="card project-card111">
+                    <div id="carouselRahulMart" class="carousel slide carousel-box111" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="../static/assets/img/Project/RahulMart/RahulMartCartpage.PNG" alt="Rahul Mart 1" />
+                        </div>
+                        <div class="carousel-item">
+                          <img src="../static/assets/img/Project/RahulMart/RahulmartProductspage.PNG"
+                            alt="Rahul Mart 2" />
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselRahulMart"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselRahulMart"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title text-center mb-0">Rahul Mart</h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6">
+                <a href="https://rohanarts.vercel.app" target="_blank" class="text-decoration-none text-dark">
+                  <div class="card project-card111">
+                    <div id="carouselRohanArts" class="carousel slide carousel-box111" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="../static/assets/img/Project/RohanArts/RohanArtsSection.PNG" alt="Rohan Arts 1" />
+                        </div>
+                        <div class="carousel-item">
+                          <img src="../static/assets/img/Project/RohanArts/RohanArtsPage.PNG" alt="Rohan Arts 2" />
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselRohanArts"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselRohanArts"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title text-center mb-0">Rohan Arts</h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6">
+                <a href="https://rahulsharmahosted.netlify.app" target="_blank" class="text-decoration-none text-dark">
+                  <div class="card project-card111">
+                    <div id="carouselElementaryApps" class="carousel slide carousel-box111" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="../static/assets/img/Project/ElementaryApps/ToDoList.PNG" alt="Elementary Apps 1" />
+                        </div>
+                        <div class="carousel-item">
+                          <img src="../static/assets/img/Project/ElementaryApps/TicTacToe.PNG"
+                            alt="Elementary Apps 2" />
+                        </div>
+                        <div class="carousel-item">
+                          <img src="../static/assets/img/Project/ElementaryApps/Quiz.PNG" alt="Elementary Apps 3" />
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselElementaryApps"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselElementaryApps"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title text-center mb-0">
+                        Elementary Apps
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold">Achievements</h3>
+        <ul>
+          <li>1st Prize for PollVerse (project exhibition)</li>
+          <li>Top 4 team – inter-college hackathon</li>
+          <li>TPO Coordinator since Aug 2024</li>
+        </ul>
+      </div>
+
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold">Education</h3>
+        <p>
+          <strong>Xavier Institute of Engineering</strong>, Mumbai<br />B.E.
+          Information Technology (2022 – Present)<br /><em>CGPA 8.7</em>
+        </p>
+      </div>
+
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold">Open to Opportunities</h3>
+        <p>
+          I’m open to full-time or freelance roles where I can deliver robust,
+          scalable web solutions.
+        </p>
+      </div>
+
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold">Contact</h3>
+        <ul class="list-unstyled">
+          <li>
+            Email:
+            <a href="mailto:rsharma122703@gmail.com">rsharma122703@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/rahul122703/" target="_blank">LinkedIn</a>
+            ·
+            <a href="https://github.com/rahul122703/" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 mb-5">
+        <h3 class="fw-bold">Hobbies</h3>
+        <ul class="list-unstyled">
+          <li>
+            ♟️ Chess –
+            <a href="https://www.chess.com/member/rahul122703" target="_blank">Visit Profile</a>
+          </li>
+          <li>
+            ⌨️ Touch typing (100+ WPM)–
+            <a href="https://monkeytype.com/profile/rahul122703" target="_blank">Visit Profile</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
