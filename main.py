@@ -263,5 +263,11 @@ def logout():
     logout_user()
     return redirect(url_for('get_all_posts'))
 
+
+@app.route('/google7cd84df55525cb0.html')
+def google_verify():
+    return app.send_static_file('google7cd84df55525cb0.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5002)
